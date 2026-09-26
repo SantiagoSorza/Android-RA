@@ -4,11 +4,24 @@ using UnityEngine;
 
 public class GrabManager : MonoBehaviour
 {
+    public static GrabManager Instance;
+
     public GameObject[] interactables;
     public List<GameObject> objects;
     public List<GameObject> products;
 
     public GameObject heldItem;
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+    }
+
     void Start()
     {
         interactables = GameObject.FindGameObjectsWithTag("Interactable");

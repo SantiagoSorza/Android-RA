@@ -9,8 +9,8 @@ public class GrabObject : MonoBehaviour
     Vector3 spawnerPosition;
     Quaternion spawnerRotation;
 
-    public AudioClip soundGrab;
-    public AudioClip soundPlace;
+    // public AudioClip soundGrab;
+    // public AudioClip soundPlace;
 
     [SerializeField] public string type = "Objeto";
     [SerializeField] public GameObject spawner;
@@ -19,7 +19,7 @@ public class GrabObject : MonoBehaviour
 
     void Start()
     {
-        player = GetComponent<AudioSource>();
+        //player = GetComponent<AudioSource>();
         spawnerPosition = spawner.transform.position;
         spawnerRotation = spawner.transform.rotation;
         boxCollider = GetComponent<BoxCollider>();
@@ -28,7 +28,7 @@ public class GrabObject : MonoBehaviour
 
     public void Grab()
     {
-        player.PlayOneShot(soundGrab);
+       // player.PlayOneShot(soundGrab);
         if (grabManager.heldItem != null)
         {
             grabManager.heldItem.GetComponent<GrabObject>().Drop();
@@ -64,7 +64,7 @@ public class GrabObject : MonoBehaviour
 
     public void Place(Vector3 position)
     {
-        player.PlayOneShot(soundPlace);
+        //player.PlayOneShot(soundPlace);
         transform.position = position;
         grabManager.heldItem = null;
         boxCollider.enabled = true;
